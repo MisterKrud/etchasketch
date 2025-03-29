@@ -1,12 +1,17 @@
 let divGrid = 16;
 
+//create a div container for the grid and append it to the main html container
 let container = document.querySelector("#container"); 
 const gridContainer = document.createElement("div");
 gridContainer.setAttribute("id","grid-container")
   container.appendChild(gridContainer);
 
+
+//function to determine size of the grid
 function createDivGrid(number=divGrid) {
-  
+
+  gridContainer.innerHTML = '';
+
 for (let i=0; i<number; i++) {
   let divRow = document.createElement("div")
  // divRow.textContent = "text"
@@ -15,7 +20,7 @@ for (let i=0; i<number; i++) {
     //"background-color: #ffaadd; border: white, solid, 1px; flex-grow: 1;"
   //)
   divRow.setAttribute("class", "divRow");
-  
+  container.appendChild(gridContainer)
   gridContainer.appendChild(divRow)
 
 
@@ -29,19 +34,40 @@ for (let i=0; i<number; i++) {
 } 
 }
 
-
 createDivGrid();
 
+//function removeGrid() {
+  //createDivGrid(1);
+//}
+//createDivGrid();
+//removeGrid;
+
+//create div for customising grid
 const controls = document.createElement("div");
 controls.setAttribute("id", "controls")
-controls.textContent = "Placeholder text";
 container.appendChild(controls)
 
+
+//create buttonwith event listener to execute gridsize function
+const gridNumberButton = document.createElement("button");
+gridNumberButton.textContent = "Create Grid"
+controls.appendChild(gridNumberButton);
+
+//create input field for grid size
 const gridNumberInput = document.createElement("input");
+gridNumberInput.setAttribute("type","number");
+
+console.log(divGrid)
 controls.appendChild(gridNumberInput);
 
-let gridNumberValue = gridNumberInput.value;
 
-const gridNumberButton = document.createElement("button");
-controls.appendChild(gridNumberButton);
+
+
+gridNumberButton.addEventListener("click", () => {
+  
+  divGrid = parseInt(gridNumberInput.value);
+  createDivGrid(divGrid);
+});
+
+
 
