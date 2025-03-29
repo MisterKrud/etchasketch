@@ -1,8 +1,8 @@
-let gridLH = 16;
+let divGrid = 16;
 
 let container = document.querySelector("#container"); 
 
-function createDivRow(number) {
+function createDivGrid(number=gridLH) {
 for (let i=0; i<number; i++) {
   let divRow = document.createElement("div")
  // divRow.textContent = "text"
@@ -26,4 +26,8 @@ for (let i=0; i<number; i++) {
 }
 
 
-createDivRow(16);
+createDivGrid();
+
+const controls = document.createElement("div");
+controls.textContent = "Placeholder text";
+container.appendChild(controls)
