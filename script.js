@@ -36,3 +36,12 @@ const controls = document.createElement("div");
 controls.setAttribute("id", "controls")
 controls.textContent = "Placeholder text";
 container.appendChild(controls)
+
+const gridNumberInput = document.createElement("input");
+controls.appendChild(gridNumberInput);
+
+let gridNumberValue = gridNumberInput.value;
+
+const gridNumberButton = document.createElement("button");
+controls.appendChild(gridNumberButton);
+
