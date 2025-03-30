@@ -8,8 +8,10 @@ container.appendChild(gridContainer);
 
 //function to determine size of the grid
 function createDivGrid(number = divGrid) {
+ //clear grid
   gridContainer.innerHTML = "";
 
+  //create x rows
   for (let i = 0; i < number; i++) {
     let divRow = document.createElement("div");
 
@@ -17,6 +19,7 @@ function createDivGrid(number = divGrid) {
     container.prepend(gridContainer);
     gridContainer.appendChild(divRow);
 
+//create x cells in each row
     for (let i = 0; i < number; i++) {
       let divCell = document.createElement("div");
 
@@ -26,14 +29,20 @@ function createDivGrid(number = divGrid) {
   }
   const cellsToColor = document.querySelectorAll(".divCell");
 
-cellsToColor.forEach((i) => {
-  console.log(i);
-  i.addEventListener("mouseover", () => {
-    console.log("add event: " + i);
-    i.setAttribute("style", "background-color: red;");
-    console.log("set attribute: " + i);
+  // colour each cell red on mouseover
+  cellsToColor.forEach((i) => {
+    i.addEventListener("mouseenter", () => {
+      i.setAttribute("style", "background-color: red;");
+    });
+    
   });
-});
+
+  cellsToColor.forEach((i) => {
+    i.addEventListener("mouseleave", () => {
+      i.setAttribute("style", "background-color: white;");
+    });
+    
+  });
 }
 
 //create div for customising grid
@@ -52,8 +61,6 @@ gridNumberInput.setAttribute("type", "number");
 
 console.log(divGrid);
 controls.appendChild(gridNumberInput);
-
-
 
 gridNumberButton.addEventListener("click", () => {
   divGrid = parseInt(gridNumberInput.value);
