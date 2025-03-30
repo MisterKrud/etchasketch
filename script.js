@@ -18,9 +18,9 @@ for (let i=0; i<number; i++) {
   //divRow.setAttribute(
     //"style",
     //"background-color: #ffaadd; border: white, solid, 1px; flex-grow: 1;"
-  //)
+  //
   divRow.setAttribute("class", "divRow");
-  container.appendChild(gridContainer)
+  container.prepend(gridContainer)
   gridContainer.appendChild(divRow)
 
 
@@ -67,6 +67,7 @@ gridNumberButton.addEventListener("click", () => {
   
   divGrid = parseInt(gridNumberInput.value);
   createDivGrid(divGrid);
+  
 });
 
 
