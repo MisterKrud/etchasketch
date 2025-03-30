@@ -14,11 +14,7 @@ function createDivGrid(number=divGrid) {
 
 for (let i=0; i<number; i++) {
   let divRow = document.createElement("div")
- // divRow.textContent = "text"
-  //divRow.setAttribute(
-    //"style",
-    //"background-color: #ffaadd; border: white, solid, 1px; flex-grow: 1;"
-  //
+
   divRow.setAttribute("class", "divRow");
   container.prepend(gridContainer)
   gridContainer.appendChild(divRow)
@@ -26,21 +22,19 @@ for (let i=0; i<number; i++) {
 
 for (let i=0; i<number; i++) {
   let divCell = document.createElement("div")
- // divCell.setAttribute("style", "border: Gray, solid, 2px;")
- // divCell.textContent="cell"
+
 
   divCell.setAttribute("class", "divCell")
   divRow.appendChild(divCell)}
+
+  
+
+  
 } 
 }
 
-createDivGrid();
 
-//function removeGrid() {
-  //createDivGrid(1);
-//}
-//createDivGrid();
-//removeGrid;
+
 
 //create div for customising grid
 const controls = document.createElement("div");
@@ -69,6 +63,16 @@ gridNumberButton.addEventListener("click", () => {
   createDivGrid(divGrid);
   
 });
+
+let cellToColor = document.querySelectorAll(".divCell")
+
+//divCell.addEventListener("mouseover", () => {
+  //divCell.setAttribute("style", "backgroundColor: red;")
+//})
+
+createDivGrid();
+
+
 
 
 
