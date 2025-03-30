@@ -39,7 +39,7 @@ function createDivGrid(number = divGrid) {
 
   cellsToColor.forEach((i) => {
     i.addEventListener("mouseleave", () => {
-      i.setAttribute("style", "background-color: white;");
+      i.setAttribute("style", "background-color: pink;");
     });
     
   });
