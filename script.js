@@ -6,6 +6,11 @@ const gridContainer = document.createElement("div");
 gridContainer.setAttribute("id", "grid-container");
 container.appendChild(gridContainer);
 
+//create array of random colours
+const colourArray = ['#ff0000','#00ff00','#0000ff']
+
+
+
 //function to determine size of the grid
 function createDivGrid(number = divGrid) {
  //clear grid
@@ -33,7 +38,7 @@ function createDivGrid(number = divGrid) {
   cellsToColor.forEach((i) => {
     i.addEventListener("mouseenter", () => {
       let chosenColour = colourPicker.value;
-      i.setAttribute("style", `background-color: ${chosenColour};`);
+      i.setAttribute("style", `background-color: ${colourArray[1]};`);
     });
     
   });
