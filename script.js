@@ -32,14 +32,17 @@ function createDivGrid(number = divGrid) {
   // colour each cell red on mouseover
   cellsToColor.forEach((i) => {
     i.addEventListener("mouseenter", () => {
-      i.setAttribute("style", "background-color: red;");
+      let chosenColour = colourPicker.value;
+      i.setAttribute("style", `background-color: ${chosenColour};`);
     });
     
   });
 
   cellsToColor.forEach((i) => {
     i.addEventListener("mouseleave", () => {
-      i.setAttribute("style", "background-color: pink;");
+      let chosenColour = colourPicker.value;
+      i.setAttribute("style", `background-color: ${chosenColour}50;`);
+      i.setAttribute("opacity","0.5");
     });
     
   });
