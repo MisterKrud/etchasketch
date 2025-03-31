@@ -45,22 +45,37 @@ function createDivGrid(number = divGrid) {
   });
 }
 
-//create div for customising grid
-const controls = document.createElement("div");
-controls.setAttribute("id", "controls");
-container.appendChild(controls);
+//create div for customising grid controls
+const controlsContainer = document.createElement("div");
+controlsContainer.setAttribute("id", "controls-container");
+container.appendChild(controlsContainer);
+
+//create div for grid sizing
+const gridSizerDiv = document.createElement("div")
+gridSizerDiv.setAttribute("class", "control-divs")
+controlsContainer.appendChild(gridSizerDiv)
+
+//create div for colour picker
+const colourPickerDiv = document.createElement("div")
+colourPickerDiv.setAttribute("class", "control-divs")
+controlsContainer.appendChild(colourPickerDiv)
+
 
 //create buttonwith event listener to execute gridsize function
 const gridNumberButton = document.createElement("button");
 gridNumberButton.textContent = "Create Grid";
-controls.appendChild(gridNumberButton);
+gridSizerDiv.appendChild(gridNumberButton);
 
 //create input field for grid size
 const gridNumberInput = document.createElement("input");
 gridNumberInput.setAttribute("type", "number");
 
+const colourPicker = document.createElement("input")
+colourPicker.setAttribute("type", "color")
+colourPickerDiv.appendChild(colourPicker);
+
 console.log(divGrid);
-controls.appendChild(gridNumberInput);
+gridSizerDiv.appendChild(gridNumberInput);
 
 gridNumberButton.addEventListener("click", () => {
   divGrid = parseInt(gridNumberInput.value);
