@@ -59,6 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     border: rgb(252, 34, 5), solid, 1px;
     padding: 2rem;
   }

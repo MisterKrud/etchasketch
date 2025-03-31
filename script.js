@@ -53,11 +53,13 @@ container.appendChild(controlsContainer);
 //create div for grid sizing
 const gridSizerDiv = document.createElement("div")
 gridSizerDiv.setAttribute("class", "control-divs")
+
 controlsContainer.appendChild(gridSizerDiv)
 
 //create div for colour picker
 const colourPickerDiv = document.createElement("div")
 colourPickerDiv.setAttribute("class", "control-divs")
+
 controlsContainer.appendChild(colourPickerDiv)
 
 
@@ -73,9 +75,15 @@ gridNumberInput.setAttribute("max", 100);
 
 const colourPicker = document.createElement("input")
 colourPicker.setAttribute("type", "color")
-colourPicker.defaultValue = "red";
-colourPickerDiv.appendChild(colourPicker);
+colourPicker.defaultValue = "#ff0000"
 
+
+
+
+const colourPickerTextLabel = document.createElement("p")
+colourPickerTextLabel.textContent = "Choose your colour";
+colourPickerDiv.appendChild(colourPickerTextLabel);
+colourPickerDiv.appendChild(colourPicker);
 
 
 
