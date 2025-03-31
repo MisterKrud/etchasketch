@@ -63,22 +63,27 @@ controlsContainer.appendChild(colourPickerDiv)
 
 //create buttonwith event listener to execute gridsize function
 const gridNumberButton = document.createElement("button");
-gridNumberButton.textContent = "Create Grid";
+gridNumberButton.textContent = "Change Grid Size (max: 100)";
 gridSizerDiv.appendChild(gridNumberButton);
 
 //create input field for grid size
 const gridNumberInput = document.createElement("input");
 gridNumberInput.setAttribute("type", "number");
+gridNumberInput.setAttribute("max", 100);
 
 const colourPicker = document.createElement("input")
 colourPicker.setAttribute("type", "color")
+colourPicker.defaultValue = "red";
 colourPickerDiv.appendChild(colourPicker);
 
-console.log(divGrid);
+
+
+
 gridSizerDiv.appendChild(gridNumberInput);
 
 gridNumberButton.addEventListener("click", () => {
   divGrid = parseInt(gridNumberInput.value);
+  if (divGrid >100 ){divGrid=100};
   createDivGrid(divGrid);
 });
 

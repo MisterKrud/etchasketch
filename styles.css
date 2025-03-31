@@ -49,10 +49,16 @@ body {
 
   #controls-container {
     background-color: lightcyan;
+    display: flex;
+    justify-content: center;
     padding: 5rem;
+    border: rgb(12, 1, 1), solid, 1px;
   }
 
   .control-divs {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    border: rgb(252, 34, 5), solid, 1px;
+    padding: 2rem;
   }
