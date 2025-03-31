@@ -6,6 +6,10 @@ const gridContainer = document.createElement("div");
 gridContainer.setAttribute("id", "grid-container");
 container.appendChild(gridContainer);
 
+const randomiserCheckbox = document.createElement("input");
+randomiserCheckbox.setAttribute("type","checkbox")
+randomiserCheckbox.setAttribute("class","check")
+
 //create array of random colours
 const colourArray = [
   "#ff0000",
@@ -19,8 +23,7 @@ const colourArray = [
   "#ff1493",
 ];
 
-
-let randomColour = Math.floor((Math.random()*9)+1);
+let randomColour = Math.floor(Math.random() * 9 + 1);
 
 //function to determine size of the grid
 function createDivGrid(number = divGrid) {
@@ -47,29 +50,25 @@ function createDivGrid(number = divGrid) {
 
   // colour each cell red on mouseover
   cellsToColor.forEach((i) => {
-    let r = Math.floor((Math.random()*9)+1);
+    let colourChoice 
+
+
+
+    let r = Math.floor(Math.random() * 9 + 1);
     i.addEventListener("mouseenter", () => {
       let chosenColour = colourPicker.value;
-     
-      
       i.setAttribute("style", `background-color: ${colourArray[r]};`);
-      
-      
-      
     });
-    
+
     i.addEventListener("mouseleave", () => {
       let chosenColour = colourPicker.value;
-      
+
       i.setAttribute("style", `background-color: ${colourArray[r]}50;`);
-      console.log(colourArray[r]+50)
-      
+      console.log(colourArray[r] + 50);
     });
   });
 
-  //cellsToColor.forEach((i) => {
-   
- // });
+ 
 }
 
 //create div for customising grid controls
@@ -109,6 +108,13 @@ colourPickerDiv.appendChild(colourPickerTextLabel);
 colourPickerDiv.appendChild(colourPicker);
 
 gridSizerDiv.appendChild(gridNumberInput);
+
+
+const randomiserCheckBoxDiv = document.createElement("div");
+randomiserCheckBoxDiv.setAttribute("class","control-divs");
+randomiserCheckBoxDiv.textContent = "Click to randomise colours"
+controlsContainer.appendChild(randomiserCheckBoxDiv);
+randomiserCheckBoxDiv.appendChild(randomiserCheckbox);
 
 gridNumberButton.addEventListener("click", () => {
   divGrid = parseInt(gridNumberInput.value);
