@@ -93,10 +93,15 @@ gridNumberButton.addEventListener("click", () => {
 
 rainbowButton.addEventListener("click", () => {
   
-  createDivGridRandom(divGrid);
+  createDivGrid(divGrid,rainbowCellColours);
 });
 
-function createDivGrid(number = divGrid) {
+randomButton.addEventListener("click", () => {
+  
+  createDivGrid(divGrid,randomCellColours);
+});
+
+function createDivGrid(number = divGrid, func = cellColouriser) {
   //clear grid
   gridContainer.innerHTML = "";
 
@@ -116,8 +121,10 @@ function createDivGrid(number = divGrid) {
       divRow.appendChild(divCell);
     }
   }
+  func()
+}
+  function cellColouriser() {
   const cellsToColor = document.querySelectorAll(".divCell");
-
   // colour each cell red on mouseover
 
     cellsToColor.forEach((i) => {
@@ -130,31 +137,13 @@ function createDivGrid(number = divGrid) {
       i.addEventListener("mouseleave", () => {
         i.setAttribute("style", `background-color: ${colourPicker.value}50;`);
       });
-    });
+    })
+  };
   
     
-  }
+  
 
-  function createDivGridRainbow(number = divGrid) {
-    //clear grid
-    gridContainer.innerHTML = "";
-  
-    //create x rows
-    for (let i = 0; i < number; i++) {
-      let divRow = document.createElement("div");
-  
-      divRow.setAttribute("class", "divRow");
-      container.prepend(gridContainer);
-      gridContainer.appendChild(divRow);
-  
-      //create x cells in each row
-      for (let i = 0; i < number; i++) {
-        let divCell = document.createElement("div");
-  
-        divCell.setAttribute("class", "divCell");
-        divRow.appendChild(divCell);
-      }
-    }
+  function rainbowCellColours() {
     const cellsToColor = document.querySelectorAll(".divCell");
   
     // colour each cell red on mouseover
@@ -174,26 +163,7 @@ function createDivGrid(number = divGrid) {
       
     }
 
-    function createDivGridRandom(number = divGrid) {
-      //clear grid
-      gridContainer.innerHTML = "";
-    
-      //create x rows
-      for (let i = 0; i < number; i++) {
-        let divRow = document.createElement("div");
-    
-        divRow.setAttribute("class", "divRow");
-        container.prepend(gridContainer);
-        gridContainer.appendChild(divRow);
-    
-        //create x cells in each row
-        for (let i = 0; i < number; i++) {
-          let divCell = document.createElement("div");
-    
-          divCell.setAttribute("class", "divCell");
-          divRow.appendChild(divCell);
-        }
-      }
+    function randomCellColours() {
       const cellsToColor = document.querySelectorAll(".divCell");
     
       // colour each cell red on mouseover
