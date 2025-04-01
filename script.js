@@ -81,6 +81,10 @@ gridNumberButton.addEventListener("click", () => {
   createDivGrid(divGrid);
 });
 
+randomiserCheckbox.addEventListener("change", () => {
+  createDivGrid(divGrid);
+})
+
 function createDivGrid(number = divGrid) {
   //clear grid
   gridContainer.innerHTML = "";
