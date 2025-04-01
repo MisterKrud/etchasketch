@@ -8,12 +8,10 @@ container.appendChild(gridContainer);
 
 const rainbowButton = document.createElement("button");
 //rainbowButton.setAttribute("type", "button");
-rainbowButton.textContent="Rainbow colours"
+rainbowButton.textContent = "Rainbow colours";
 
-const randomButton = document.createElement("button")
-randomButton.textContent = "Random colours"
-
-
+const randomButton = document.createElement("button");
+randomButton.textContent = "Random colours";
 
 //create array of random colours
 const colourArray = [
@@ -30,10 +28,8 @@ const colourArray = [
 
 function randomColours() {
   let n = (Math.random() * 0xfffff * 1000000).toString(16);
-  return '#' + n.slice(0, 6);
+  return "#" + n.slice(0, 6);
 }
-
-
 
 //function to determine size of the grid
 
@@ -79,7 +75,7 @@ const rainbowButtonDiv = document.createElement("div");
 rainbowButtonDiv.setAttribute("class", "control-divs");
 
 controlsContainer.appendChild(rainbowButtonDiv);
-rainbowButtonDiv.textContent = "OR..."
+rainbowButtonDiv.textContent = "OR...";
 rainbowButtonDiv.appendChild(rainbowButton);
 rainbowButtonDiv.appendChild(randomButton);
 
@@ -92,13 +88,11 @@ gridNumberButton.addEventListener("click", () => {
 });
 
 rainbowButton.addEventListener("click", () => {
-  
-  createDivGrid(divGrid,rainbowCellColours);
+  createDivGrid(divGrid, rainbowCellColours);
 });
 
 randomButton.addEventListener("click", () => {
-  
-  createDivGrid(divGrid,randomCellColours);
+  createDivGrid(divGrid, theDarkening);
 });
 
 function createDivGrid(number = divGrid, func = cellColouriser) {
@@ -121,70 +115,60 @@ function createDivGrid(number = divGrid, func = cellColouriser) {
       divRow.appendChild(divCell);
     }
   }
-  func()
+  func();
 }
-  function cellColouriser() {
+function cellColouriser() {
   const cellsToColor = document.querySelectorAll(".divCell");
   // colour each cell red on mouseover
 
-    cellsToColor.forEach((i) => {
-      let r = Math.floor(Math.random() * 9);
+  cellsToColor.forEach((i) => {
+    let r = Math.floor(Math.random() * 9);
 
-      i.addEventListener("mouseenter", () => {
-        i.setAttribute("style", `background-color: ${colourPicker.value};`);
-      });
+    i.addEventListener("mouseenter", () => {
+      i.setAttribute("style", `background-color: ${colourPicker.value};`);
+    });
 
-      i.addEventListener("mouseleave", () => {
-        i.setAttribute("style", `background-color: ${colourPicker.value}50;`);
-      });
-    })
-  };
-  
-    
-  
+    i.addEventListener("mouseleave", () => {
+      i.setAttribute("style", `background-color: ${colourPicker.value}50;`);
+    });
+  });
+}
 
-  function rainbowCellColours() {
-    const cellsToColor = document.querySelectorAll(".divCell");
-  
-    // colour each cell red on mouseover
-  
-      cellsToColor.forEach((i) => {
-        let r = Math.floor(Math.random() * 9);
-  
-        i.addEventListener("mouseenter", () => {
-          i.setAttribute("style", `background-color: ${colourArray[r]};`);
-        });
-  
-        i.addEventListener("mouseleave", () => {
-          i.setAttribute("style", `background-color: ${colourArray[r]}50;`);
-        });
-      });
-    
-      
-    }
+function rainbowCellColours() {
+  const cellsToColor = document.querySelectorAll(".divCell");
 
-    function randomCellColours() {
-      const cellsToColor = document.querySelectorAll(".divCell");
-    
-      // colour each cell red on mouseover
-    
-        cellsToColor.forEach((i) => {
-          let r = Math.floor(Math.random() * 9);
-    
-          i.addEventListener("mouseenter", () => {
-            i.setAttribute("style", `background-color: ${randomColours()};`);
-          });
-    
-         // i.addEventListener("mouseleave", () => {
-           // i.setAttribute("style", `background-color: ${randomColours()}90;`);
-         // });
-        });
-      
-        
-      }
+  // colour each cell red on mouseover
 
-//divCell.addEventListener("mouseover", () => {
-//divCell.setAttribute("style", "backgroundColor: red;")
-//})
+  cellsToColor.forEach((i) => {
+    let r = Math.floor(Math.random() * 9);
+
+    i.addEventListener("mouseenter", () => {
+      i.setAttribute("style", `background-color: ${colourArray[r]};`);
+    });
+
+    i.addEventListener("mouseleave", () => {
+      i.setAttribute("style", `background-color: ${colourArray[r]}50;`);
+    });
+  });
+}
+
+function randomCellColours() {
+  const cellsToColor = document.querySelectorAll(".divCell");
+
+  // colour each cell red on mouseover
+
+  cellsToColor.forEach((i) => {
+    let r = Math.floor(Math.random() * 9);
+
+    i.addEventListener("mouseenter", () => {
+      i.setAttribute("style", `background-color: ${randomColours()};`);
+    });
+
+    // i.addEventListener("mouseleave", () => {
+    // i.setAttribute("style", `background-color: ${randomColours()}90;`);
+    // });
+  });
+}
+
 
 createDivGrid();
