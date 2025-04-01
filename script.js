@@ -6,9 +6,11 @@ const gridContainer = document.createElement("div");
 gridContainer.setAttribute("id", "grid-container");
 container.appendChild(gridContainer);
 
-const randomiserCheckbox = document.createElement("input");
-randomiserCheckbox.setAttribute("type","checkbox")
-randomiserCheckbox.setAttribute("class","check")
+const rainbowButton = document.createElement("button");
+//rainbowButton.setAttribute("type", "button");
+rainbowButton.textContent="Click for rainbow colours"
+
+
 
 //create array of random colours
 const colourArray = [
@@ -23,10 +25,21 @@ const colourArray = [
   "#ff1493",
 ];
 
-let randomColour = Math.floor(Math.random() * 9 + 1);
+function randomColours() {
+  let r = Math.floor(Math.random()*16);
+  let g = Math.floor(Math.random()*16);
+  let b = Math.floor(Math.random()*16);
+
+  const randColour = (r+g+b);
+  
+  const hexColour = randColour.toString(16)
+
+  return (`#${hexColour}`)
+}
+
+
 
 //function to determine size of the grid
-
 
 //create div for customising grid controls
 const controlsContainer = document.createElement("div");
@@ -66,12 +79,11 @@ colourPickerDiv.appendChild(colourPicker);
 
 gridSizerDiv.appendChild(gridNumberInput);
 
+const rainbowButtonDiv = document.createElement("div");
+rainbowButtonDiv.setAttribute("class", "control-divs");
 
-const randomiserCheckBoxDiv = document.createElement("div");
-randomiserCheckBoxDiv.setAttribute("class","control-divs");
-randomiserCheckBoxDiv.textContent = "Click to randomise colours"
-controlsContainer.appendChild(randomiserCheckBoxDiv);
-randomiserCheckBoxDiv.appendChild(randomiserCheckbox);
+controlsContainer.appendChild(rainbowButtonDiv);
+rainbowButtonDiv.appendChild(rainbowButton);
 
 gridNumberButton.addEventListener("click", () => {
   divGrid = parseInt(gridNumberInput.value);
@@ -81,9 +93,10 @@ gridNumberButton.addEventListener("click", () => {
   createDivGrid(divGrid);
 });
 
-randomiserCheckbox.addEventListener("change", () => {
-  createDivGrid(divGrid);
-})
+rainbowButton.addEventListener("click", () => {
+  
+  createDivGridRainbow(divGrid);
+});
 
 function createDivGrid(number = divGrid) {
   //clear grid
@@ -108,33 +121,60 @@ function createDivGrid(number = divGrid) {
   const cellsToColor = document.querySelectorAll(".divCell");
 
   // colour each cell red on mouseover
-  cellsToColor.forEach((i) => {
-    let colourChoice 
 
-    let chosenColour 
+    cellsToColor.forEach((i) => {
+      let r = Math.floor(Math.random() * 9);
 
+      i.addEventListener("mouseenter", () => {
+        i.setAttribute("style", `background-color: ${colourPicker.value};`);
+      });
 
-    let r = Math.floor(Math.random() * 9);
+      i.addEventListener("mouseleave", () => {
+        i.setAttribute("style", `background-color: ${colourPicker.value}50;`);
+      });
+    });
+  
     
-    
-    
-
-    i.addEventListener("mouseenter", () => {
-     
-       
-        i.setAttribute("style", `background-color: ${colourPicker.value};`)
-      
-    })
-
-    i.addEventListener("mouseleave", () => {
-     
-     
-        i.setAttribute("style", `background-color: ${colourPicker.value}50;`)
-      })
-    })
   }
+
+  function createDivGridRainbow(number = divGrid) {
+    //clear grid
+    gridContainer.innerHTML = "";
+  
+    //create x rows
+    for (let i = 0; i < number; i++) {
+      let divRow = document.createElement("div");
+  
+      divRow.setAttribute("class", "divRow");
+      container.prepend(gridContainer);
+      gridContainer.appendChild(divRow);
+  
+      //create x cells in each row
+      for (let i = 0; i < number; i++) {
+        let divCell = document.createElement("div");
+  
+        divCell.setAttribute("class", "divCell");
+        divRow.appendChild(divCell);
+      }
+    }
+    const cellsToColor = document.querySelectorAll(".divCell");
+  
+    // colour each cell red on mouseover
+  
+      cellsToColor.forEach((i) => {
+        let r = Math.floor(Math.random() * 9);
+  
+        i.addEventListener("mouseenter", () => {
+          i.setAttribute("style", `background-color: ${colourArray[r]};`);
+        });
+  
+        i.addEventListener("mouseleave", () => {
+          i.setAttribute("style", `background-color: ${colourArray[r]}50;`);
+        });
+      });
+    
       
- 
+    }
 
 //divCell.addEventListener("mouseover", () => {
 //divCell.setAttribute("style", "backgroundColor: red;")
